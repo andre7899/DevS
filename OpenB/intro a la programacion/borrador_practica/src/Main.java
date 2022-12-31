@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -115,7 +113,7 @@ public class Main {
          */
 
         //======================================= 7. INTRO A POO ==============================================
-
+        /*
         Coche coche1 = new Coche(5,50);
         System.out.println(coche1.numeroDePuertas);
         System.out.println(coche1.velocidadActual);
@@ -126,13 +124,32 @@ public class Main {
         System.out.println(coche1.numeroDePuertas);
         System.out.println(coche1.velocidadActual);
         System.out.println(coche1.velocidadMaxima);
+        */
+
+        //========================== 8.PRIVACIDAD, ABSTRACCION Y ENCAPSULAMIENTO  ==================================
+        /*
+        Vehiculo coche = new Vehiculo();
+        coche.setTipo("Coupe");
+        coche.setVelocidadMaxima(120);
+        coche.setRapido(true);
+
+        Vehiculo moto = new Vehiculo();
+        moto.setTipo("Scotter");
+        moto.setVelocidadMaxima(50);
+        moto.setRapido(false);
+
+        System.out.println(coche.getTipo());
+        System.out.println(coche.getVelocidadMaxima());
+        System.out.println(moto.getTipo()+ " "+moto.getVelocidadMaxima());
+
     }
     public static void imprimeEuros(double valor){
         System.out.println(valor);
     }
-
+    */
 
     //-------6---------
+    /*
     public static void  funcion1(){
         funcion2();
     }
@@ -144,9 +161,11 @@ public class Main {
         var i = 15;
         //System.out.println(15/0);
     }
-
+    */
 }
-//-------- 7 ----------
+
+    //-------- 7 ----------
+/*
 class Coche{
     int numeroDePuertas;
     int velocidadMaxima;
@@ -166,3 +185,38 @@ class Coche{
     public  void desacelerar(){this.velocidadActual-=15;}
 
 }
+*/
+
+    //--------------- 8 ------------
+    /*
+abstract class Vehiculo{
+    private String tipo; //private > Nada > protected > public (encapsulacion).
+                        // abstraccion: extraer caracteristicas relevantes para el contexto
+    private int velocidadMaxima;
+    private boolean rapido;
+    String sonido;
+
+    public void setRapido(boolean rapido) {
+        this.rapido = rapido;
+    }
+
+    String getTipo(){
+        return this.tipo;
+    }
+    void setTipo(String tipo){
+            this.tipo = tipo;
+    }
+
+    int getVelocidadMaxima(){
+        return this.velocidadMaxima;
+    }
+    void setVelocidadMaxima(int velocidad){
+        this.velocidadMaxima = velocidad;
+    }
+    public void setSonido(String sonido){
+    }
+    public String getSonido();
+}
+*/
+
+
