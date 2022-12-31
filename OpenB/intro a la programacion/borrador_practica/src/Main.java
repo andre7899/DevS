@@ -1,3 +1,4 @@
+import javax.swing.*;
 
 public class Main {
 
@@ -102,6 +103,7 @@ public class Main {
          */
 
         //======================================= 6. DEPURACION ==============================================
+        /*
         int valores[] = new int[5];
         int posicion = 4;
 
@@ -110,6 +112,20 @@ public class Main {
         funcion1();
 
 
+         */
+
+        //======================================= 7. INTRO A POO ==============================================
+
+        Coche coche1 = new Coche(5,50);
+        System.out.println(coche1.numeroDePuertas);
+        System.out.println(coche1.velocidadActual);
+        System.out.println(coche1.velocidadMaxima);
+        System.out.println();
+
+        Coche coche2 = new Coche();
+        System.out.println(coche1.numeroDePuertas);
+        System.out.println(coche1.velocidadActual);
+        System.out.println(coche1.velocidadMaxima);
     }
     public static void imprimeEuros(double valor){
         System.out.println(valor);
@@ -128,5 +144,25 @@ public class Main {
         var i = 15;
         //System.out.println(15/0);
     }
+
+}
+//-------- 7 ----------
+class Coche{
+    int numeroDePuertas;
+    int velocidadMaxima;
+    float velocidadActual;
+
+    public Coche(){ //CONSTRUCTOR!!
+        numeroDePuertas = 5;
+        velocidadMaxima = 120;
+        System.out.println("Estoy en el constructor");
+    }
+    public Coche(int numeroDePuertas, int velocidadMaxima){ //CONSTRUCTOR!!
+        this.numeroDePuertas = numeroDePuertas;
+        this.velocidadMaxima = velocidadMaxima;
+        System.out.println("Estoy en el constructor");
+    }
+    public void acelerar(){ this.velocidadActual+=15;   }
+    public  void desacelerar(){this.velocidadActual-=15;}
 
 }
