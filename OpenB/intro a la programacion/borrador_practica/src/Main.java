@@ -1,3 +1,5 @@
+import com.sun.jdi.event.MonitorContendedEnteredEvent;
+
 import javax.swing.plaf.PanelUI;
 
 public class Main {
@@ -152,11 +154,29 @@ public class Main {
 
 
         //============================ 9. HERENCIA, POLIMORFISMO E INTERFACES =================================
-
+        /*
         Coche coche = new Coche();
         coche.diHola();
 
 
+         */
+
+
+        //============================ 10. METODOS DE CLASE =================================
+        /*
+        Coche_2 coche = new Coche_2();
+        Moto moto = new Moto();
+
+        EjecutaAcelerar(moto);
+        EjecutaAcelerar(coche);
+        */
+         var valA = 15; //int 32bit = 4 bytes
+         var valB=10;
+
+         suma(valA,valB); // los pasos de valores crean copias y por lo tanto duplican el espacio en memoria de la variable que se copia
+
+        System.out.println(valA);
+        System.out.println(valB);
 
 
     }
@@ -176,6 +196,20 @@ public class Main {
     }
     */
 
+    //---------10 ---------
+    /*
+    public static void EjecutaAcelerar(Vehiculo_2 vehiculo){ //pueden satisfacer las implemntaciones
+        vehiculo.acelerar(15);
+    }
+
+     */
+    //  10.1
+    public static int suma(int a, int b){
+        return a+b;
+    }
+    public static void CocheChanger(Coche_2 coche){
+        coche.velocidad +=50;
+    }
 }
 //=========== CLASES ==================
 //-------- 7 ----------
@@ -234,6 +268,7 @@ abstract class Vehiculo{
 */
 
 //---------------9-------------
+/*
  abstract class  Vehiculo {
     int velocidadMaxima;
     String matricula;
@@ -298,3 +333,33 @@ class Coche_2 implements Vehiculo_2{ // implementa puede "heredar" de varias sup
     }
 
 }
+*/
+
+//------------- 10 y 10.1------------
+
+
+interface Vehiculo_2{
+    int velocidad = 0; // En un interface las variables son finals
+    void acelerar(int velocidad);
+    void frenar(int velocidad);
+}
+
+class Coche_2 implements Vehiculo_2{
+    int velocidad  = 0;
+    public void acelerar(int velocidad){
+        System.out.println("coche() -> acelera()");
+    }
+    public void frenar(int velocidad){
+        System.out.println("coche() <- desacelera()");
+    }
+
+}
+class Moto implements Vehiculo_2{  //entends herencia simple
+    public void acelerar(int velocidad){
+        System.out.println("moto() -> acelera()");
+    }
+    public void frenar(int velocidad){
+        System.out.println("moto() <- desacelera()");
+    }
+}
+
