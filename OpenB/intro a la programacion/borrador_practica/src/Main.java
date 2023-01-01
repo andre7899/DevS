@@ -1,10 +1,12 @@
+import javax.swing.plaf.PanelUI;
+
 public class Main {
 
     public static void main(String[] args) {
         //======================================= 4. SENTENCIAS DE CONTROL ==============================================
-
+        /*
         //conditionals (if, else, etc)
-        /*System.out.println("---------Practicando condicionale-----------");
+        System.out.println("---------Practicando condicionale-----------");
         String estacion = "otoño";
         if (estacion== "primavera"){
             System.out.println("Es primavera");
@@ -67,7 +69,6 @@ public class Main {
         */
 
 
-
         //======================================= 5. ERRORES ==============================================
         /*
         int numeros[] = {10,20,30,40,50};
@@ -100,6 +101,7 @@ public class Main {
 
          */
 
+
         //======================================= 6. DEPURACION ==============================================
         /*
         int valores[] = new int[5];
@@ -111,6 +113,7 @@ public class Main {
 
 
          */
+
 
         //======================================= 7. INTRO A POO ==============================================
         /*
@@ -125,6 +128,7 @@ public class Main {
         System.out.println(coche1.velocidadActual);
         System.out.println(coche1.velocidadMaxima);
         */
+
 
         //========================== 8.PRIVACIDAD, ABSTRACCION Y ENCAPSULAMIENTO  ==================================
         /*
@@ -143,13 +147,22 @@ public class Main {
         System.out.println(moto.getTipo()+ " "+moto.getVelocidadMaxima());
 
     }
-    public static void imprimeEuros(double valor){
-        System.out.println(valor);
-    }
-    */
 
-    //-------6---------
-    /*
+         */
+
+
+        //============================ 9. HERENCIA, POLIMORFISMO E INTERFACES =================================
+
+        Coche coche = new Coche();
+        coche.diHola();
+
+
+
+
+    }
+
+        //-------6---------
+        /*
     public static void  funcion1(){
         funcion2();
     }
@@ -162,9 +175,10 @@ public class Main {
         //System.out.println(15/0);
     }
     */
-}
 
-    //-------- 7 ----------
+}
+//=========== CLASES ==================
+//-------- 7 ----------
 /*
 class Coche{
     int numeroDePuertas;
@@ -187,8 +201,8 @@ class Coche{
 }
 */
 
-    //--------------- 8 ------------
-    /*
+//--------------- 8 ------------
+/*
 abstract class Vehiculo{
     private String tipo; //private > Nada > protected > public (encapsulacion).
                         // abstraccion: extraer caracteristicas relevantes para el contexto
@@ -219,4 +233,68 @@ abstract class Vehiculo{
 }
 */
 
+//---------------9-------------
+ abstract class  Vehiculo {
+    int velocidadMaxima;
+    String matricula;
+    String sonido;
 
+    public Vehiculo() {
+        System.out.println("Estoy en el constructor");
+    }
+
+
+    public boolean compruebaMatricula (String matricula){
+        return this.matricula == matricula;
+    }
+
+    public void diHola(){
+        System.out.println("Holaa!!");
+    }
+
+}
+
+class Motor{
+    private String tipoMotor;
+
+    public Motor() {System.out.println("Estoy en el constructor");}
+}
+
+class Coche extends Vehiculo {  //final para que sea la ultima subclase, herencia multiple
+    public void diHola(){
+        System.out.println("Soy un coche"); //polimorfismo
+    }
+}
+
+
+
+class Moto extends Vehiculo{  //entends herencia simple
+     public String getSonido(){
+         return "Soy un sonidito de moto: "+ this.sonido;
+     }
+    public void setSonido(String sonido){
+        this.sonido = sonido;
+    }
+
+}
+
+class Coupe extends Coche{ // Aqui es herencia multinivel (2do nivel)
+
+}
+
+
+interface Vehiculo_2{
+     int variables = 0;
+     void acelerar(int velocidad);
+     void frenar(int velocidad);
+}
+
+class Coche_2 implements Vehiculo_2{ // implementa puede "heredar" de varias superclases a diferencia de "abstract" con extends
+    public void acelerar(int velocidad){
+
+    }
+    public void frenar(int velocidad){
+
+    }
+
+}
