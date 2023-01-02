@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formularios</title>
+  </head>
+  <body>
+    <!--
+            form Para introducir datos
+            En el input si o si debemos usar "name"
+        -->
+    <form action="resultados.html" method="get" >
+      <div>
+        <label for="nombreusuario">Nombre de usuario</label>
+        <input type="text" name="nombreusuario" id="nombreusuario" />
+      </div>
+      <br>
+      <div>
+        <label for="">Comentario</label>
+        <textarea name="comentarios" id="comentarios" cols="20" rows="5"></textarea>
+      </div>
+      <br>
+      <div>
+        <label for="edad">¿Cuál es tu edad?</label>
+        <input type="number" name="edad" id="edad" min="0" max="150" step="5"/>
+      </div>
+      <br>
+      <div>
+        <label for="email">¿Cuál es tu email?</label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <br>
+      <div>
+        <label for="nacimiento">¿Cuál es tu fecha de nacimiento?</label>
+        <input type="date" name="nacimiento" id="nacimiento" />
+      </div>
+      <br>
+      <div>
+        <!--
+          for del label relacionado con el id del input
+        -->
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" required/>
+      </div>
+      <button type="reset">Reset</button>
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>
