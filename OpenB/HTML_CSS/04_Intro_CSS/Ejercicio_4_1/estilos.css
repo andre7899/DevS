@@ -1,0 +1,19 @@
+#elemento-1 {
+    color: red;
+}
+
+/* Acordarse del espacio */
+ul #elemento-1 {
+    font-size: 2rem;    
+}
+
+html {
+    background-color: aqua;
+}
+body {
+    border-radius: 5px;
+    border: 2px;
+    border-style: dotted;
+    padding: 10px
+    ;
+}
