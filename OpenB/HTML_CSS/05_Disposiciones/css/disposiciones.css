@@ -1,0 +1,20 @@
+.div-1, .div-2 {
+    background-color: red;
+    /* display: block; por defecto */
+}
+.img {
+    width: 100px;
+    height: 100px; /* esto se pude modificar cuando este el display en inline block */
+    display: inline-block;/* por defecto*/
+}
+.span-1 {
+    background-color: rgb(131, 255, 214);
+    /* display: inline; por defecto */
+    float: right;
+   
+}
+ .span-2 {
+    background-color: rgb(131, 255, 214);
+    /* display: inline; por defecto */
+   float: left;
+}
