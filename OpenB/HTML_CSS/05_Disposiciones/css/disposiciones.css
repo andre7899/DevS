@@ -4,7 +4,7 @@
 }
 .img {
     width: 100px;
-    height: 100px; /* esto se pude modificar cuando este el display en inline block */
+    height: 200px; /* esto se pude modificar cuando este el display en inline block */
     display: inline-block;/* por defecto*/
 }
 .span-1 {
