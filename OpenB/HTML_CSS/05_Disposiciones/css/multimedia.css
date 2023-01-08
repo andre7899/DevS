@@ -15,12 +15,13 @@
 
 .galeria {
     display: flex;
+    /*para no estar haciendo scroll*/
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .imagen-galeria {
-    width: 150px;
+    width: 300px;
 }
 
 .imagen-galeria:hover {
