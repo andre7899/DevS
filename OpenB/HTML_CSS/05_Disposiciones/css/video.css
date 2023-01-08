@@ -20,7 +20,7 @@ html {
     height: 100vh;
     
     position: relative;
-    /* text-align: center; */
+    text-align: center;
     display: flex;
     gap: 10px;
     flex-direction: column;

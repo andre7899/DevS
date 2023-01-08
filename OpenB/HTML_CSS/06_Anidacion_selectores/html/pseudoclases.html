@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudoclases</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        .hover {
+            width: 300px;
+            height: 100px;
+            background-color: bisque;
+            overflow: auto;
+            
+        }
+        .hover :hover {/*Se activa en cuanto el raton pasa por encima*/
+            background-color: burlywood;
+            cursor: pointer;
+        }
+
+        .listado {
+            padding: 15px;
+            background-color: aquamarine;
+            border: 5px solid black;
+            /*width: 400px;*/
+            padding: 10px;
+            margin: 10px;
+        }
+        /*https://www.w3schools.com/*/
+        .listado p:first-child {
+            color: white;
+        }
+
+        a:link {/* link no visitado*/
+            color: deeppink;
+        }
+
+        a:visited {
+            color: crimson;
+        }
+
+        a:active {
+            color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="hover">
+        <p>
+            Nostrud duis id ad ea do in do voluptate et officia non dolore. Fugiat qui culpa laboris irure cupidatat ad tempor excepteur irure cillum. Labore laboris labore nostrud sunt non commodo eiusmod duis enim dolor. Proident adipisicing consectetur consectetur ex elit enim elit ipsum. Dolor esse ea exercitation ipsum tempor. Deserunt quis nisi incididunt velit ea Lorem voluptate veniam quis ex.
+        </p>
+    </div>
+    <div class="listado">
+        <p>Parrafo 1</p>
+        <p>Parrafo 2</p>
+        <p>Parrafo 3</p>
+
+    </div>
+    <div class="listado">
+        <!-- Si hay otra etique primero, el first child no funciona -->
+        <h3>sgdfhdfhf</h3>
+        <p>Parrafo 1</p>
+        <p>Parrafo 2</p>
+        <p>Parrafo 3</p>
+
+    </div>
+    <div class="enlaces">
+        <a href="http://google.com" target="_blank">Enlace a google</a>
+        <a href="http://marca.com" target="_blank">Enlace a marca</a>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.p-contenedor {
+    color: green;
+}
+
+/*Aqui es redundante el body*/
+body .contenedor p{
+    color: green;
+}
+
+.contenedor #boton-contenedor {
+    background-color: yellow;
+}

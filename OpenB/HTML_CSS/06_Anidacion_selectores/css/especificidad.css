@@ -1,0 +1,23 @@
+/* (1,0,0) */
+/* (0,1,0) */
+/* (0,0,1) */
+/* (0,0,0) */
+h1#h1-id.h1-clase {
+    color: darksalmon;
+}
+
+.h1-clase {
+    color: yellow;
+}
+
+h1 {
+    /* important es el nivel max de especificidad */
+    /*Tratar de EVITAR en la medidad de lo posible*/
+    color: blue !important;
+}
+
+
+p {
+    color: red;
+}
+
