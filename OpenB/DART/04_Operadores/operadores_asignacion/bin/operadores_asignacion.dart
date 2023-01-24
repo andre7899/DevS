@@ -3,7 +3,7 @@ void main(List<String> arguments) {
   int b = 25;
   var c;
 
-  c ??= 1; //Si la variable c era nula, le asignamos el valor a
+  c ??= 1; //Si la variable c era nula, le asignamos el valor correspondiente
   print(c);
 
   c += a;
