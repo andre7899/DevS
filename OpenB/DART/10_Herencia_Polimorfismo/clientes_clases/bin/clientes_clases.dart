@@ -28,7 +28,7 @@ void main(List<String> arguments) {
   print(pedro.runtimeType);
 
 // se puede hacer esta asignacion cuando es hija heredada
-  Personas daniel = pedro;
+  Personas daniel = pedro; //polimorfismo
   print(daniel.runtimeType);
   print(daniel.nombre);
 
