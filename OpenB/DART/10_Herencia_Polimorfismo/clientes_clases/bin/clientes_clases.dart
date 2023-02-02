@@ -29,6 +29,7 @@ void main(List<String> arguments) {
 
 // se puede hacer esta asignacion cuando es hija heredada
   Personas daniel = pedro; //polimorfismo
+  // print(daniel.salario);//no se puede, salario existe solo en 'trabajdor'
   print(daniel.runtimeType);
   print(daniel.nombre);
 
