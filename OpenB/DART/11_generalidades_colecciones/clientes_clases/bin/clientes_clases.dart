@@ -14,7 +14,7 @@ void main(List<String> args) {
   DireccinUSA direccinUSA = DireccinUSA('31101', 'FL', 1, 'Esperanza', 'Miami');
 
   Personas<DireccionEs> luis = Personas('Luis', direccion: direccionEs);
-  Personas<DireccinUSA> paul = Personas('Paul', direccion: direccinUSA);
+  Personas paul = Personas('Paul', direccion: direccinUSA);
   print(luis.direccion!
       .cod_postal); //esto no se podria si no especificamos el tipo de clase
 
