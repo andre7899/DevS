@@ -16,6 +16,7 @@ Future<void> imprimirDatosUsuario() async {
   }
 }
 
+//tmb funciona sin async
 Future<void> obtenerDatosUsuario(SendPort p) async =>
     Future.delayed(Duration(seconds: 4), (() {
       print('Ya lo he parido desde la isla aislada');
