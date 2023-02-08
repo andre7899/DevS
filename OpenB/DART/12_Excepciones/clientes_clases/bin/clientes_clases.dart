@@ -41,4 +41,6 @@ void main(List<String> args) {
   }
   //eL codigo siempre continua si captura la excepcion
   print('El programa continua');
+
+  //Si dentro del cath hay otra excepcion, el finally si se ejecutara pero no el resto del programa
 }
