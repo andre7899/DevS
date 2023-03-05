@@ -61,9 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: _elevatedButtomPulsado,
               child: Text('Elevated buttom'),
               style: ElevatedButton.styleFrom(
-                  elevation: 10,
-                  primary: Colors.brown,
-                  shadowColor: Colors.amberAccent),
+                elevation: 10,
+                backgroundColor: Colors.red,
+                // shadowColor: Colors.amberAccent,
+              ),
             ),
             Padding(padding: EdgeInsets.all(5)),
             TextButton(
