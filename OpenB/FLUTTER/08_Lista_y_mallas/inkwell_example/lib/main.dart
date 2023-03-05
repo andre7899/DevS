@@ -105,6 +105,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 // color: Colors.green,
                 child: InkWell(
+                  enableFeedback: true,
+                  autofocus: true,
+
+                  // focusColor: Colors.green,
+                  // highlightColor: Colors.red,
+                  // hoverColor: Colors.purple,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
