@@ -83,7 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(padding: EdgeInsets.all(5)),
             IconButton(
               onPressed: _iconButtomPulsado,
-              icon: Icon(Icons.accessibility),
+              icon: Icon(
+                Icons.accessibility,
+              ),
               color: Colors.blue,
             ),
             Padding(padding: EdgeInsets.all(5)),
@@ -125,6 +127,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Cupertino Buttom',
               ),
               color: Colors.greenAccent,
+            ),
+            SizedBox(
+              height: 10,
             ),
           ],
         ),
