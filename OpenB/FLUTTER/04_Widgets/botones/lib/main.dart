@@ -126,10 +126,17 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text(
                 'Cupertino Buttom',
               ),
-              color: Colors.greenAccent,
+              // color: Colors.greenAccent,
             ),
             SizedBox(
               height: 10,
+            ),
+            CupertinoButton.filled(
+              onPressed: _cupertinoButtom,
+              child: Text(
+                'Cupertino Buttom',
+              ),
+              // color: Colors.greenAccent,
             ),
           ],
         ),
