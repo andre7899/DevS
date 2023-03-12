@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http_get_request/helpers/base_request.dart';
 import 'package:http_get_request/models/item.dart';
+import 'package:http_get_request/widget/error_widget.dart';
+import 'package:http_get_request/widget/succes_widget.dart';
 
 class HTTPWidget extends StatefulWidget {
   HTTPWidget(this._request);
@@ -25,15 +27,10 @@ class _HTTPWidgetState extends State<HTTPWidget> {
       future: futureItem,
       builder: (BuildContext context, AsyncSnapshot<Item> snapshot) {
         if (snapshot.hasError) {
-          return Text('Error en los datos');
+          return ErrorItemWidget();
         }
         if (snapshot.hasData) {
-          Item? item = snapshot.data;
-          if (item != null) {
-            return Text('${item.id} - ${item.title}');
-          } else {
-            return Text('No data show');
-          }
+          return SuccessWidget(snapshot.data);
         }
         return CircularProgressIndicator();
       },
