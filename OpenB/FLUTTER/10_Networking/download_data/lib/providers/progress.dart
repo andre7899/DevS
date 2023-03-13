@@ -26,7 +26,7 @@ class DownloadProgress extends ChangeNotifier {
       options: Options(
         headers: {
           HttpHeaders.acceptEncodingHeader:
-              '*' //Me acepte cualquier tiepo de codificacion
+              '*' //Me acepte cualquier tipo de codificacion
         },
       ),
       onReceiveProgress: (count, total) {
