@@ -31,8 +31,7 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               title: 'Lenguajes programacion titulo',
               theme: ThemeData(
-                
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
                 useMaterial3: true,
               ),
               home: const MyHomePage(title: 'page lengaujes programacion'),
