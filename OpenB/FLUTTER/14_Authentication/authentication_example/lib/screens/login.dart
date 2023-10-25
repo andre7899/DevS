@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: ElevatedButton(
                                   onPressed: () {
                                     Navigator.of(context)
-                                        .pushReplacement(MaterialPageRoute(
+                                        .push(MaterialPageRoute(
                                       builder: (context) {
                                         return const RegisterScreen();
                                       },
