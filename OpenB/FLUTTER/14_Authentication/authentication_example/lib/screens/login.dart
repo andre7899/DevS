@@ -1,6 +1,7 @@
 import 'package:authentication_example/screens/register_screen.dart';
 import 'package:authentication_example/screens/user_screen.dart';
 import 'package:authentication_example/utils/firebase_auth.dart';
+import 'package:authentication_example/utils/validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,8 @@ class _LoginPageState extends State<LoginPage> {
   final _focusPassword = FocusNode();
 
   bool _isProccessing = false;
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -44,18 +47,29 @@ class _LoginPageState extends State<LoginPage> {
                       'Login ',
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    TextField(
-                      controller: _emailFieldController,
-                      focusNode: _focusEmail,
-                      decoration: const InputDecoration(hintText: 'email..'),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
-                      controller: _passwordFieldController,
-                      focusNode: _focusPassword,
-                      decoration: const InputDecoration(hintText: 'passowrd..'),
+                    Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            controller: _emailFieldController,
+                            focusNode: _focusEmail,
+                            decoration:
+                                const InputDecoration(hintText: 'email..'),
+                            validator: Validator.validateEmail,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            controller: _passwordFieldController,
+                            focusNode: _focusPassword,
+                            decoration:
+                                const InputDecoration(hintText: 'passowrd..'),
+                            validator: Validator.validatePassword,
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       height: 10,
@@ -69,32 +83,35 @@ class _LoginPageState extends State<LoginPage> {
                                   onPressed: () async {
                                     _focusEmail.unfocus();
                                     _focusPassword.unfocus();
-                                    setState(() {
-                                      _isProccessing = true;
-                                    });
 
-                                    User? user =
-                                        await FireAuth.signInUsingEmailAndPass(
-                                      email: _emailFieldController.text,
-                                      password: _passwordFieldController.text,
-                                    );
-                                    setState(() {
-                                      _isProccessing = false;
-                                    });
-                                    if (user != null) {
-                                      Navigator.of(context)
-                                          .pushReplacement(MaterialPageRoute(
-                                        builder: (context) {
-                                          return UserScreeen(
-                                            user: user,
-                                          );
-                                        },
-                                      ));
+                                    if (formKey.currentState!.validate()) {
+                                      setState(() {
+                                        _isProccessing = true;
+                                      });
+
+                                      User? user = await FireAuth
+                                          .signInUsingEmailAndPass(
+                                        email: _emailFieldController.text,
+                                        password: _passwordFieldController.text,
+                                      );
+                                      setState(() {
+                                        _isProccessing = false;
+                                      });
+                                      if (user != null) {
+                                        Navigator.of(context)
+                                            .pushReplacement(MaterialPageRoute(
+                                          builder: (context) {
+                                            return UserScreeen(
+                                              user: user,
+                                            );
+                                          },
+                                        ));
+                                      }
                                     }
                                   },
                                   child: const Text(
                                     'Login',
-                                    style: TextStyle(color: Colors.white),
+                                    // style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -110,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                   child: const Text(
                                     'Registrar',
-                                    style: TextStyle(color: Colors.white),
+                                    // style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                               )

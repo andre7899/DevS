@@ -1,5 +1,6 @@
 import 'package:authentication_example/screens/user_screen.dart';
 import 'package:authentication_example/utils/firebase_auth.dart';
+import 'package:authentication_example/utils/validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final focusName = FocusNode();
 
   bool _isProccessing = false;
+  final formKey = GlobalKey<FormState>();
 
   void unFocus() {
     focusEmail.unfocus();
@@ -39,20 +41,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
         },
         child: Column(
           children: [
-            TextField(
+            TextFormField(
               controller: _nameController,
               focusNode: focusName,
               decoration: const InputDecoration(hintText: 'Nombre'),
+              validator: Validator.validateName,
             ),
-            TextField(
+            TextFormField(
               controller: _emailController,
               focusNode: focusEmail,
               decoration: const InputDecoration(hintText: 'Correo'),
+              validator: Validator.validateEmail,
             ),
-            TextField(
+            TextFormField(
               controller: _passwordController,
               focusNode: focusPassword,
               decoration: const InputDecoration(hintText: 'Contraseña'),
+              validator: Validator.validatePassword,
             ),
             _isProccessing
                 ? const CircularProgressIndicator()
