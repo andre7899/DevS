@@ -1,3 +1,4 @@
+import 'package:authentication_example/screens/register_screen.dart';
 import 'package:authentication_example/screens/user_screen.dart';
 import 'package:authentication_example/utils/firebase_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -56,6 +57,9 @@ class _LoginPageState extends State<LoginPage> {
                       focusNode: _focusPassword,
                       decoration: const InputDecoration(hintText: 'passowrd..'),
                     ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     _isProccessing
                         ? const CircularProgressIndicator()
                         : Row(
@@ -94,10 +98,17 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                               ),
-                              const Expanded(
+                              Expanded(
                                 child: ElevatedButton(
-                                  onPressed: null,
-                                  child: Text(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushReplacement(MaterialPageRoute(
+                                      builder: (context) {
+                                        return const RegisterScreen();
+                                      },
+                                    ));
+                                  },
+                                  child: const Text(
                                     'Registrar',
                                     style: TextStyle(color: Colors.white),
                                   ),
