@@ -37,4 +37,54 @@ class TestDirecto {
       [9, 4, 3, 8, 7, 5, 2, 9, 6, 1],
     ],
   ];
+  int aciertos = 0;
+  int span = 0;
+  int fallosEnItem = 0;
+
+  int posDeGrupo = 0;
+  int posElemento = 0;
+  String correcto() {
+    aciertos++;
+    if (numeroOrdenDirecto[posDeGrupo][posElemento].length > 2) {
+      span = numeroOrdenDirecto[posDeGrupo][posElemento].length - 1;
+    }
+
+    if (posElemento == 0) {
+      posElemento++;
+      return numeroOrdenDirecto[posDeGrupo][posElemento].toString();
+    } else {
+      posElemento = 0;
+      posDeGrupo++;
+      if (posDeGrupo < numeroOrdenDirecto.length) {
+        return numeroOrdenDirecto[posDeGrupo][posElemento].toString();
+      } else {
+        return 'terminado';
+      }
+    }
+  }
+
+  String incorrecto() {
+    fallosEnItem++;
+    if (numeroOrdenDirecto[posDeGrupo][posElemento].length > 2) {
+      span = numeroOrdenDirecto[posDeGrupo][posElemento].length - 1;
+    }
+
+    if (posElemento == 0) {
+      posElemento++;
+      return numeroOrdenDirecto[posDeGrupo][posElemento].toString();
+    } else {
+      if (fallosEnItem == 2) {
+        return 'terminado';
+      } else {
+        fallosEnItem = 0;
+        posElemento = 0;
+        posDeGrupo++;
+        if (posDeGrupo < numeroOrdenDirecto.length) {
+          return numeroOrdenDirecto[posDeGrupo][posElemento].toString();
+        } else {
+          return 'terminado';
+        }
+      }
+    }
+  }
 }

@@ -10,6 +10,21 @@ class TestScreen extends StatelessWidget {
     final testProvider = Provider.of<CustomTestProvider>(context);
     final textController = TextEditingController();
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Página de test'),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.stop,
+              color: Colors.red,
+              size: 40,
+            ),
+            onPressed: () {
+              testProvider.pararTest();
+            },
+          )
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +66,9 @@ class TestScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    testProvider.incorrecto();
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white),
@@ -61,7 +78,9 @@ class TestScreen extends StatelessWidget {
                   width: 10,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    testProvider.correcto();
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
                       foregroundColor: Colors.white),
