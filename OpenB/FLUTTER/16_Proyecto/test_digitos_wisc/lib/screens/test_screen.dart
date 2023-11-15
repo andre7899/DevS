@@ -26,40 +26,66 @@ class TestScreen extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            testProvider.testStarted
-                ? Text(testProvider.numerosEnPantalla)
-                : ElevatedButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: const Text('Comenzar Test'),
-                            content: TextField(
-                              controller: textController,
-                              decoration: const InputDecoration(
-                                  hintText: 'Introduce el código'),
+        child: testProvider.testStarted
+            ? Column(
+                children: [
+                  Text(testProvider.testActualString),
+                  testProvider.pruebaTest
+                      ? const Text(
+                          'Ejemplo',
+                          style: TextStyle(color: Colors.green),
+                        )
+                      : const SizedBox.shrink(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(testProvider.numerosEnPantalla),
+                ],
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  testProvider.testTerminado
+                      ? const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            'Test Finalizado',
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  testProvider
-                                      .comenzarTest(textController.text);
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('Comenzar'),
-                              )
-                            ],
-                          );
-                        },
-                      );
-                    },
-                    child: const Text('Comenzar Test'))
-          ],
-        ),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                  ElevatedButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: const Text('Comenzar Test'),
+                              content: TextField(
+                                controller: textController,
+                                decoration: const InputDecoration(
+                                    hintText: 'Introduce el código'),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    testProvider
+                                        .comenzarTest(textController.text);
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Comenzar'),
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: const Text('Comenzar Test'))
+                ],
+              ),
       ),
       floatingActionButton: testProvider.testStarted
           ? Row(

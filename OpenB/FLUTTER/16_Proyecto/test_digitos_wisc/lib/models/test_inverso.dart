@@ -37,4 +37,69 @@ class TestInverso {
       [9, 8, 1, 6, 3, 2, 4, 7],
     ],
   ];
+
+  int aciertos = 0;
+  int span = 0;
+  int fallosEnItem = 0;
+
+  int contEjemplo = 0;
+
+  int posDeGrupo = 0;
+  int posElemento = 0;
+
+  String correcto() {
+    if (contEjemplo < 2) {
+      contEjemplo++;
+    } else {
+      aciertos++;
+      span = numeroOrdenInverso[posDeGrupo][posElemento].length;
+    }
+
+    // if (numeroOrdenInverso[posDeGrupo][posElemento].length > 2) {
+    //   span = numeroOrdenInverso[posDeGrupo][posElemento].length - 1;
+    // }
+
+    if (posElemento == 0) {
+      posElemento++;
+      return numeroOrdenInverso[posDeGrupo][posElemento].toString();
+    } else {
+      posElemento = 0;
+      posDeGrupo++;
+      if (posDeGrupo < numeroOrdenInverso.length) {
+        return numeroOrdenInverso[posDeGrupo][posElemento].toString();
+      } else {
+        return 'terminado';
+      }
+    }
+  }
+
+  String incorrecto() {
+    if (contEjemplo < 2) {
+      contEjemplo++;
+    } else {
+      fallosEnItem++;
+      // span = numeroOrdenInverso[posDeGrupo][posElemento].length ;
+    }
+    // if (numeroOrdenInverso[posDeGrupo][posElemento].length > 2) {
+    //   span = numeroOrdenInverso[posDeGrupo][posElemento].length - 1;
+    // }
+
+    if (posElemento == 0) {
+      posElemento++;
+      return numeroOrdenInverso[posDeGrupo][posElemento].toString();
+    } else {
+      if (fallosEnItem == 2) {
+        return 'terminado';
+      } else {
+        fallosEnItem = 0;
+        posElemento = 0;
+        posDeGrupo++;
+        if (posDeGrupo < numeroOrdenInverso.length) {
+          return numeroOrdenInverso[posDeGrupo][posElemento].toString();
+        } else {
+          return 'terminado';
+        }
+      }
+    }
+  }
 }

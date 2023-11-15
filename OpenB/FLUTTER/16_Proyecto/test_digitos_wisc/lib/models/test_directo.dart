@@ -43,6 +43,7 @@ class TestDirecto {
 
   int posDeGrupo = 0;
   int posElemento = 0;
+
   String correcto() {
     aciertos++;
     if (numeroOrdenDirecto[posDeGrupo][posElemento].length > 2) {

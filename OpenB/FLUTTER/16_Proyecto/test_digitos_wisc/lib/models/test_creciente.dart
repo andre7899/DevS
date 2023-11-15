@@ -45,4 +45,66 @@ class TestCreciente {
       [9, 1, 8, 3, 6, 3, 9, 2, 6],
     ],
   ];
+  int aciertos = 0,
+      span = 0,
+      fallosEnItem = 0,
+      contEjemplo = 0,
+      posDeGrupo = 0,
+      posElemento = 0;
+
+  String correcto() {
+    if (contEjemplo < 4) {
+      contEjemplo++;
+    } else {
+      aciertos++;
+      span = numerordenCreciente[posDeGrupo][posElemento].length;
+    }
+
+    // if (numerordenCreciente[posDeGrupo][posElemento].length > 2) {
+    //   span = numerordenCreciente[posDeGrupo][posElemento].length - 1;
+    // }
+
+    if (posElemento == 0) {
+      posElemento++;
+      return numerordenCreciente[posDeGrupo][posElemento].toString();
+    } else {
+      posElemento = 0;
+      posDeGrupo++;
+      if (posDeGrupo < numerordenCreciente.length) {
+        return numerordenCreciente[posDeGrupo][posElemento].toString();
+      } else {
+        return 'terminado';
+      }
+    }
+  }
+
+  String incorrecto() {
+    if (contEjemplo < 4) {
+      contEjemplo++;
+    } else {
+      fallosEnItem++;
+      // span = numerordenCreciente[posDeGrupo][posElemento].length ;
+    }
+    // if (numerordenCreciente[posDeGrupo][posElemento].length > 2) {
+    //   span = numerordenCreciente[posDeGrupo][posElemento].length - 1;
+    // }
+
+    if (posElemento == 0) {
+      posElemento++;
+      return numerordenCreciente[posDeGrupo][posElemento].toString();
+    } else {
+      if (fallosEnItem == 2) {
+        return 'terminado';
+      } else {
+        fallosEnItem = 0;
+        posElemento = 0;
+        posDeGrupo++;
+        if (posDeGrupo < numerordenCreciente.length) {
+          return numerordenCreciente[posDeGrupo][posElemento].toString();
+        } else {
+          return 'terminado';
+        }
+      }
+    }
+  }
 }
