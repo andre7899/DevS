@@ -28,6 +28,7 @@ class TestScreen extends StatelessWidget {
       body: Center(
         child: testProvider.testStarted
             ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(testProvider.testActualString),
                   testProvider.pruebaTest

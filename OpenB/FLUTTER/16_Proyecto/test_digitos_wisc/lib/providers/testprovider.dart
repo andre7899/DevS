@@ -3,6 +3,7 @@ import 'package:test_digitos_wisc/models/sujeto.dart';
 import 'package:test_digitos_wisc/models/test_creciente.dart';
 import 'package:test_digitos_wisc/models/test_directo.dart';
 import 'package:test_digitos_wisc/models/test_inverso.dart';
+import 'package:test_digitos_wisc/services/test_service.dart';
 
 class CustomTestProvider extends ChangeNotifier {
   bool testStarted = false;
@@ -11,6 +12,8 @@ class CustomTestProvider extends ChangeNotifier {
   bool pruebaTest = false;
 
   Sujeto? sujeto;
+
+  TestServices testServices = TestServices();
 
   TestDirecto testDirecto = TestDirecto();
   var numerosOrdenDirecto = TestDirecto.numeroOrdenDirecto;
@@ -109,6 +112,7 @@ class CustomTestProvider extends ChangeNotifier {
     sujeto!.puntuacionInversoSpan = testInverso.span;
     sujeto!.puntuacionCreciente = testCreciente.aciertos;
     sujeto!.puntuacionCrecienteSpan = testCreciente.span;
+    testServices.addTest(sujeto!);
     notifyListeners();
   }
 
