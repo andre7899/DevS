@@ -13,16 +13,42 @@ class TestScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Página de test'),
         actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.stop,
-              color: Colors.red,
-              size: 40,
-            ),
-            onPressed: () {
-              testProvider.pararTest();
-            },
-          )
+          testProvider.testStarted
+              ? IconButton(
+                  icon: const Icon(
+                    Icons.stop,
+                    color: Colors.red,
+                    size: 40,
+                  ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title:
+                              const Text('¿Deseas realmente parar el test ?'),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Cancelar')),
+                            FilledButton(
+                                style: FilledButton.styleFrom(
+                                  backgroundColor: Colors.red,
+                                ),
+                                onPressed: () {
+                                  testProvider.pararTest();
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Parar'))
+                          ],
+                        );
+                      },
+                    );
+                  },
+                )
+              : const SizedBox.shrink()
         ],
       ),
       body: Center(

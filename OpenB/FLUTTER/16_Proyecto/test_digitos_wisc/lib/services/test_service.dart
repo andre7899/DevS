@@ -11,11 +11,14 @@ class TestServices {
       'SpanDi': sujeto.puntuacionInversoSpan,
       'Dc': sujeto.puntuacionCrecienteSpan,
       'SpanDc': sujeto.puntuacionCrecienteSpan,
+      'fecha': sujeto.fecha
     });
   }
 
-  Stream<QuerySnapshot> getStream() =>
-      FirebaseFirestore.instance.collection('tests').orderBy('COD').snapshots();
+  Stream<QuerySnapshot> getStream() => FirebaseFirestore.instance
+      .collection('tests')
+      .orderBy('fecha', descending: true)
+      .snapshots();
 
   void deleteTest(String codigo) async {
     var collection = FirebaseFirestore.instance.collection('tests');

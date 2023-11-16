@@ -1,5 +1,7 @@
 class Sujeto {
-  String _codigo;
+  final String _codigo;
+  String fecha = '';
+
   int _puntuacionDirecta = 0;
   int _puntuacionDirectaSpan = 0;
   int _puntuacionInverso = 0;
@@ -9,7 +11,9 @@ class Sujeto {
 
   get codigo => _codigo;
 
-  set codigo(final value) => _codigo = value;
+  get getFecha => fecha;
+
+  set setFecha(fecha) => this.fecha = fecha;
 
   get puntuacionDirecta => _puntuacionDirecta;
 

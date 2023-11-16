@@ -29,6 +29,10 @@ class CustomTestProvider extends ChangeNotifier {
   String testActualString = '';
 
   void comenzarTest(String codigo) {
+    testDirecto = TestDirecto();
+    testInverso = TestInverso();
+    testCreciente = TestCreciente();
+    testActual = Tests.directo;
     cambiarStringTestActual(testActual);
     testTerminado = false;
     testStarted = true;
@@ -112,6 +116,8 @@ class CustomTestProvider extends ChangeNotifier {
     sujeto!.puntuacionInversoSpan = testInverso.span;
     sujeto!.puntuacionCreciente = testCreciente.aciertos;
     sujeto!.puntuacionCrecienteSpan = testCreciente.span;
+    var now = DateTime.now();
+    sujeto!.fecha = now.toIso8601String();
     testServices.addTest(sujeto!);
     notifyListeners();
   }

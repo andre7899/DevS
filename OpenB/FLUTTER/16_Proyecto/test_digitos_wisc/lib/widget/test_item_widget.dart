@@ -10,7 +10,8 @@ class TestItem extends StatelessWidget {
         puntuacionInverso = _snapshot.get('Di'),
         puntuacionInversoSpan = _snapshot.get('SpanDi'),
         puntuacionCreciente = _snapshot.get('Dc'),
-        puntuacionCrecienteSpan = _snapshot.get('SpanDc');
+        puntuacionCrecienteSpan = _snapshot.get('SpanDc'),
+        fecha = _snapshot.get('fecha');
 
   String codigo;
   int puntuacionDirecta;
@@ -19,6 +20,7 @@ class TestItem extends StatelessWidget {
   int puntuacionInversoSpan;
   int puntuacionCreciente;
   int puntuacionCrecienteSpan;
+  String fecha;
 
   final QueryDocumentSnapshot _snapshot;
 
@@ -46,6 +48,7 @@ class TestItem extends StatelessWidget {
                         Text('Span inversa : $puntuacionInversoSpan'),
                         Text('Puntuación creciente : $puntuacionCreciente'),
                         Text('Span creciente : $puntuacionCrecienteSpan'),
+                        Text('fecha : $fecha'),
                       ],
                     ),
                   );
@@ -56,7 +59,42 @@ class TestItem extends StatelessWidget {
           ),
           IconButton(
               onPressed: () {
-                TestServices().deleteTest(codigo);
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text('¿Deseas realmente borrarr el test $codigo?'),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Puntuación directa : $puntuacionDirecta'),
+                          Text('Span directa : $puntuacionDirectaSpan'),
+                          Text('Puntuación inversa : $puntuacionInverso'),
+                          Text('Span inversa : $puntuacionInversoSpan'),
+                          Text('Puntuación creciente : $puntuacionCreciente'),
+                          Text('Span creciente : $puntuacionCrecienteSpan'),
+                        ],
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancelar')),
+                        FilledButton(
+                            style: FilledButton.styleFrom(
+                              backgroundColor: Colors.red,
+                            ),
+                            onPressed: () {
+                              TestServices().deleteTest(codigo);
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Borrar'))
+                      ],
+                    );
+                  },
+                );
               },
               icon: const Icon(Icons.delete))
         ],
