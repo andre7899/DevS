@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:test_digitos_wisc/firebase_options.dart';
 import 'package:test_digitos_wisc/providers/testprovider.dart';
 import 'package:test_digitos_wisc/screens/test_screen.dart';
+import 'package:test_digitos_wisc/services/test_service.dart';
+import 'package:test_digitos_wisc/widget/test_item_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,7 +53,27 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: const Center(),
+      body: StreamBuilder(
+        stream: TestServices().getStream(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text('Error de Conexion');
+          }
+          if (snapshot.hasData) {
+            final data = snapshot.data;
+            if (data != null) {
+              return ListView.builder(
+                itemExtent: 60,
+                itemCount: data.size,
+                itemBuilder: (context, index) {
+                  return TestItem(data.docs[index]);
+                },
+              );
+            }
+          }
+          return const CircularProgressIndicator();
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(

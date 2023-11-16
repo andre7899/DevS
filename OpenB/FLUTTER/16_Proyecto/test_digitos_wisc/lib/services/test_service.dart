@@ -13,4 +13,13 @@ class TestServices {
       'SpanDc': sujeto.puntuacionCrecienteSpan,
     });
   }
+
+  Stream<QuerySnapshot> getStream() =>
+      FirebaseFirestore.instance.collection('tests').orderBy('COD').snapshots();
+
+  void deleteTest(String codigo) async {
+    var collection = FirebaseFirestore.instance.collection('tests');
+    var snapshot = await collection.where('COD', isEqualTo: codigo).get();
+    await snapshot.docs.first.reference.delete();
+  }
 }
