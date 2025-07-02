@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HerMessageBubble extends StatelessWidget {
-  const HerMessageBubble({super.key});
+  const HerMessageBubble({super.key, required this.message, this.imageUrl});
+
+  final String message;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +18,9 @@ class HerMessageBubble extends StatelessWidget {
             color: colors.secondary,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: const Text(
-            'Aliqua duis culpa ',
-            style: TextStyle(
+          child: Text(
+            message,
+            style: const TextStyle(
               color: Colors.white,
             ),
           ),
@@ -25,16 +28,19 @@ class HerMessageBubble extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        const _ImageBubble()
+        if (imageUrl != null && imageUrl!.isNotEmpty) _ImageBubble(imageUrl!),
+        const SizedBox(
+          height: 10,
+        ),
       ],
     );
   }
 }
 
 class _ImageBubble extends StatelessWidget {
-  const _ImageBubble({
-    super.key,
-  });
+  const _ImageBubble(this.imageUrl);
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +49,14 @@ class _ImageBubble extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Image.network(
-        "https://yesno.wtf/assets/no/6-4bf0a784c173f70a0cab96efd9ff80c9.gif",
+        imageUrl,
         loadingBuilder: (context, child, loadingProgress) {
+          // print(loadingProgress);
           if (loadingProgress == null) return child;
+          // return LinearProgressIndicator(
+          //   value: loadingProgress.cumulativeBytesLoaded /
+          //       loadingProgress.expectedTotalBytes!,
+          // );
           return SizedBox(
             width: size.width * 0.7,
             height: 150,

@@ -11,6 +11,7 @@ const List<Color> colorThemes = [
   Colors.pink,
 ];
 
+//Assert valida si el contenido es verdadero, si es asi, continua con normalidad
 class AppTheme {
   final int selectedColor;
   AppTheme({
@@ -18,6 +19,9 @@ class AppTheme {
   }) : assert(selectedColor >= 0 && selectedColor < colorThemes.length,
             'Colors must be between 0 and ${colorThemes.length}');
   ThemeData theme() {
-    return ThemeData(colorSchemeSeed: colorThemes[selectedColor]);
+    return ThemeData(
+      colorSchemeSeed: colorThemes[selectedColor],
+      // brightness: Brightness.dark,
+    );
   }
 }
