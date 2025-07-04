@@ -1,0 +1,25 @@
+import 'package:flutter/material.dart';
+import 'package:widgets_app/config/router/app_router.dart';
+import 'package:widgets_app/config/theme/app_theme.dart';
+
+void main() {
+  runApp(const MainApp());
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: appRouter,
+      theme: AppTheme(selectedColor: 2).getTheme(),
+      // home: const HomeScreen(),
+      //NO es muy recomendable trabajar con esto, no lo traslad a la web, tiene inconvenientes, preferir go_router
+      // routes: {
+      //   '/buttons': (context) => const ButtonsScreen(),
+      //   '/cards': (context) => const CardsScreen(),
+      // },
+    );
+  }
+}

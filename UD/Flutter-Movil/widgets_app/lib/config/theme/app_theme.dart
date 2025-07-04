@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+
+const colorList = [
+  Colors.red,
+  Colors.green,
+  Colors.blue,
+  Colors.yellow,
+  Colors.purple,
+  Colors.orange,
+  Colors.teal,
+  Colors.pink,
+  Colors.cyan,
+  Colors.indigo,
+  Colors.brown,
+  Colors.grey,
+  Colors.amber,
+  Colors.lime,
+  Colors.deepOrange,
+];
+
+class AppTheme {
+  final int selectedColor;
+
+  const AppTheme({
+    this.selectedColor = 0,
+  })  : assert(selectedColor >= 0, 'Selected color must be greater then 0'),
+        assert(selectedColor < colorList.length,
+            'Selected color must be less than ${colorList.length}');
+
+  ThemeData getTheme() => ThemeData(
+      useMaterial3: true,
+      colorSchemeSeed: colorList[selectedColor],
+      appBarTheme: const AppBarTheme(centerTitle: false));
+}
