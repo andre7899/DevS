@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: appRouter,
-      theme: AppTheme(selectedColor: 0).getTheme(),
+      theme: AppTheme(selectedColor: 8).getTheme(),
       // home: const HomeScreen(),
       //NO es muy recomendable trabajar con esto, no lo traslad a la web, tiene inconvenientes, preferir go_router
       // routes: {
