@@ -27,4 +27,40 @@ const appMenuItems = <MenuItems>[
     link: '/cards',
     icon: Icons.credit_card,
   ),
+  // MenuItems(
+  //   title: 'Infinite Scroll',
+  //   subTitle: 'Pantalla con scroll infinito',
+  //   link: '/infinite_scroll',
+  //   icon: Icons.infinite,
+  // ),
+  MenuItems(
+    title: 'Progress Indicators',
+    subTitle: 'Generales y controlados',
+    link: '/progress',
+    icon: Icons.refresh_rounded,
+  ),
+  MenuItems(
+    title: 'Snackbars y dialogos',
+    subTitle: 'Indicadores en pantalla',
+    link: '/snackbars',
+    icon: Icons.info_outline,
+  ),
+  MenuItems(
+    title: 'Animated',
+    subTitle: 'Animaciones en Flutter',
+    link: '/animated',
+    icon: Icons.animation,
+  ),
+  MenuItems(
+    title: 'UI Controls + Tiles',
+    subTitle: 'Una serie de controles de Flutter',
+    link: '/ui_controls',
+    icon: Icons.car_rental_outlined,
+  ),
+  MenuItems(
+    title: 'App Tutorial',
+    subTitle: 'Tutorial de la aplicación',
+    link: '/tutorial',
+    icon: Icons.accessible_rounded,
+  ),
 ];
