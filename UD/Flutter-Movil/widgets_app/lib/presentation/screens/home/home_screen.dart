@@ -54,6 +54,10 @@ class _CustomListTile extends StatelessWidget {
       ),
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
+      trailing: Icon(
+        Icons.chevron_right_rounded,
+        color: colors.primary,
+      ),
       onTap: () {
         // Navigator.of(context).push(
         //   MaterialPageRoute(

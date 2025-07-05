@@ -27,12 +27,6 @@ const appMenuItems = <MenuItems>[
     link: '/cards',
     icon: Icons.credit_card,
   ),
-  // MenuItems(
-  //   title: 'Infinite Scroll',
-  //   subTitle: 'Pantalla con scroll infinito',
-  //   link: '/infinite_scroll',
-  //   icon: Icons.infinite,
-  // ),
   MenuItems(
     title: 'Progress Indicators',
     subTitle: 'Generales y controlados',
@@ -62,5 +56,11 @@ const appMenuItems = <MenuItems>[
     subTitle: 'Tutorial de la aplicación',
     link: '/tutorial',
     icon: Icons.accessible_rounded,
+  ),
+  MenuItems(
+    title: 'Infinite Scroll y pull',
+    subTitle: 'listas infinitas y pull to refresh',
+    link: '/infinite_scroll',
+    icon: Icons.list_alt_rounded,
   ),
 ];
