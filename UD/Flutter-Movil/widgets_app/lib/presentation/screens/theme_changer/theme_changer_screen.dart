@@ -10,6 +10,7 @@ class ThemeChangerScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isDarkMode = ref.watch(isDarkModeProvider);
+    final themNotifier = ref.watch(themeNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cambiar tema'),
@@ -17,14 +18,17 @@ class ThemeChangerScreen extends ConsumerWidget {
           IconButton(
               onPressed: () {
                 // Otra forma
-                ref.read(isDarkModeProvider.notifier).update(
-                      (state) => !state,
-                    );
+                // ref.read(isDarkModeProvider.notifier).update(
+                //       (state) => !state,
+                //     );
 
                 //Otra forma
                 // ref.read(isDarkModeProvider.notifier).state = !isDarkMode;
+
+                //usando el State notifier
+                ref.read(themeNotifierProvider.notifier).toggleDarkMode();
               },
-              icon: Icon(isDarkMode
+              icon: Icon(themNotifier.isDarkMode
                   ? Icons.dark_mode_outlined
                   : Icons.light_mode_outlined))
         ],
@@ -41,6 +45,7 @@ class _ThemeChangexrView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(colorListProvider);
     final selectedColor = ref.watch(selectedColorProvider);
+    final themNotifier = ref.watch(themeNotifierProvider);
 
     return ListView.builder(
       itemCount: colors.length,
@@ -53,12 +58,15 @@ class _ThemeChangexrView extends ConsumerWidget {
           ),
           subtitle: Text('${color.value}'),
           value: index,
-          groupValue: selectedColor,
+          groupValue: themNotifier.selectedColor,
           activeColor: color,
           onChanged: (value) {
-            ref.read(selectedColorProvider.notifier).update(
-                  (state) => value ?? 0,
-                );
+            // ref.read(selectedColorProvider.notifier).update(
+            //       (state) => value ?? 0,
+            //     );
+            ref
+                .read(themeNotifierProvider.notifier)
+                .updateSelectedColor(value ?? 0);
           },
         );
       },

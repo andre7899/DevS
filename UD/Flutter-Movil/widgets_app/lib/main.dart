@@ -18,13 +18,16 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
-    final selectedColor = ref.watch(selectedColorProvider);
+    // final isDarkMode = ref.watch(isDarkModeProvider);
+    // final selectedColor = ref.watch(selectedColorProvider);
+
+    final AppTheme appTheme = ref.watch(themeNotifierProvider);
 
     return MaterialApp.router(
       routerConfig: appRouter,
-      theme: AppTheme(selectedColor: selectedColor, isDarkMode: isDarkMode)
-          .getTheme(),
+      // theme: AppTheme(selectedColor: selectedColor, isDarkMode: isDarkMode)
+      //     .getTheme(),
+      theme: appTheme.getTheme(),
       // home: const HomeScreen(),
       //NO es muy recomendable trabajar con esto, no lo traslad a la web, tiene inconvenientes, preferir go_router
       // routes: {
