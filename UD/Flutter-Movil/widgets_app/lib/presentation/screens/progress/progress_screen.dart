@@ -61,13 +61,13 @@ class _ControlledCircularProgress extends StatelessWidget {
         stream: Stream.periodic(
           Durations.medium2,
           (value) {
-            print(value);
+            // print(value);
             return (value * 2) / 100;
           },
         ).takeWhile((value) => value <= 1),
         builder: (context, snapshot) {
           final progressValue = snapshot.data ?? 0.0;
-          print('snapshot: $progressValue');
+          // print('snapshot: $progressValue');
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
