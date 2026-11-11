@@ -1,27 +1,58 @@
 import 'package:cinemapedia/domain/entities/movie.dart';
+import 'package:cinemapedia/domain/repositories/movies_repository.dart';
 import 'package:cinemapedia/presentation/providers/movies/movies_repository_provider.dart';
-import 'package:flutter_riverpod/legacy.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final nowPlayingMoviesProvider =
-    StateNotifierProvider<MovieNotifier, List<Movie>>((ref) {
-      final fetchMoreMovies = ref.watch(movieRepositoryProvider).getNowPlaying;
+// Estado de las películas en cartelera. No hay caso de uso: fetchMovieCallback
+// apunta directamente a un método del repositorio.
+// nowPlayingMoviesProvider equivale a BlocProvider y MovieNotifier a un Cubit.
+final nowPlayingMoviesProvider = NotifierProvider<MovieNotifier, List<Movie>>(
+  () {
+    return MovieNotifier(
+      movieFetcher: (repository) => repository.getNowPlaying,
+    );
+  },
+);
 
-      return MovieNotifier(fetchMovieCallback: fetchMoreMovies);
-    });
+final popularMoviesProvider = NotifierProvider<MovieNotifier, List<Movie>>(() {
+  return MovieNotifier(movieFetcher: (repository) => repository.getPopular);
+});
+final topRatedMoviesProvider = NotifierProvider<MovieNotifier, List<Movie>>(() {
+  return MovieNotifier(movieFetcher: (repository) => repository.getTopRated);
+});
+final upcomingMoviesProvider = NotifierProvider<MovieNotifier, List<Movie>>(() {
+  // esto es como un caso de uso, pero no se crea una clase para ello, se apunta directamente al método del repositorio.
+
+  return MovieNotifier(movieFetcher: (repository) => repository.getUpcoming);
+});
 
 typedef MovieCallback = Future<List<Movie>> Function({int page});
+typedef MovieFetcher = MovieCallback Function(MoviesRepository repository);
 
-class MovieNotifier extends StateNotifier<List<Movie>> {
+class MovieNotifier extends Notifier<List<Movie>> {
   int currentPage = 0;
-  MovieCallback fetchMovieCallback;
+  MovieFetcher movieFetcher;
+  bool isLoading = false;
 
-  MovieNotifier({required this.fetchMovieCallback}) : super([]);
+  MovieNotifier({required this.movieFetcher});
 
   Future<void> loadNextPage() async {
+    if (isLoading) return;
+    isLoading = true;
     currentPage++;
+    print('Cargando página $currentPage');
 
-    final List<Movie> newMovies = await fetchMovieCallback();
+    final fetchMovies = movieFetcher(ref.read(movieRepositoryProvider));
 
+    final newMovies = await fetchMovies(page: currentPage);
     state = [...state, ...newMovies];
+    await SchedulerBinding.instance.endOfFrame;
+    isLoading = false;
+  }
+
+  @override
+  List<Movie> build() {
+    return [];
   }
 }
