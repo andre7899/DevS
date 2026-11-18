@@ -1,4 +1,5 @@
 import 'package:cinemapedia/presentation/screens/screens.dart';
+import 'package:cinemapedia/presentation/views/home_views/brach_page_view.dart';
 import 'package:cinemapedia/presentation/views/views.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,9 +27,15 @@ final appRouter = GoRouter(
     //     ),
     //   ],
     // ),
-    StatefulShellRoute.indexedStack(
+    StatefulShellRoute(
       builder: (context, state, child) {
-        return HomeScreen(childView: child);
+        return HomeScreen(navigationShell: child);
+      },
+      navigatorContainerBuilder: (context, navigationShell, children) {
+        return BranchPageView(
+          navigationShell: navigationShell,
+          children: children,
+        );
       },
       branches: [
         StatefulShellBranch(

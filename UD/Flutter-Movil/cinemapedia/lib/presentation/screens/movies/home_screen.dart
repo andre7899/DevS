@@ -8,22 +8,22 @@ import 'package:go_router/go_router.dart';
 class HomeScreen extends ConsumerWidget {
   static const name = 'home_screen';
 
-  final StatefulNavigationShell childView;
+  final StatefulNavigationShell navigationShell;
 
-  const HomeScreen({super.key, required this.childView});
+  const HomeScreen({super.key, required this.navigationShell});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigation(
-        index: childView.currentIndex,
-        onTap: (index) => childView.goBranch(
+        index: navigationShell.currentIndex,
+        onTap: (index) => navigationShell.goBranch(
           index,
-          initialLocation: index == childView.currentIndex,
+          initialLocation: index == navigationShell.currentIndex,
         ),
       ),
 
-      body: childView,
+      body: navigationShell,
     );
   }
 }
