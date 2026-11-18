@@ -4,7 +4,11 @@ import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',
-
+  // errorBuilder: (context, state) => NotFoundScreen(
+  //   location: state.uri.toString(),
+  //   error: state.error,
+  // ),
+  // redirect: (context, state) => '/',
   routes: [
     //Rutas padre/hijo
     // GoRoute(
@@ -22,35 +26,48 @@ final appRouter = GoRouter(
     //     ),
     //   ],
     // ),
-    ShellRoute(
+    StatefulShellRoute.indexedStack(
       builder: (context, state, child) {
         return HomeScreen(childView: child);
       },
-      routes: [
-        GoRoute(
-          path: '/',
-          name: HomeScreen.name,
-          builder: (context, state) => const HomeView(),
+      branches: [
+        StatefulShellBranch(
           routes: [
             GoRoute(
-              path: 'movie/:id',
-              name: MovieScreen.name,
-              builder: (context, state) {
-                final movieId = state.pathParameters['id'] ?? 'no-id';
-                return MovieScreen(movieId: movieId);
-              },
+              path: '/',
+              name: HomeScreen.name,
+              builder: (context, state) => const HomeView(),
+              routes: [
+                GoRoute(
+                  path: 'movie/:id',
+                  name: MovieScreen.name,
+                  builder: (context, state) {
+                    final movieId = state.pathParameters['id'] ?? 'no-id';
+                    return MovieScreen(movieId: movieId);
+                  },
+                ),
+              ],
             ),
           ],
         ),
-        GoRoute(
-          path: '/categories',
-          name: CategoriesView.name,
-          builder: (context, state) => const CategoriesView(),
+
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/categories',
+              name: CategoriesView.name,
+              builder: (context, state) => const CategoriesView(),
+            ),
+          ],
         ),
-        GoRoute(
-          path: '/search',
-          name: SearchView.name,
-          builder: (context, state) => const SearchView(),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/favorites',
+              name: FavoritesView.name,
+              builder: (context, state) => const FavoritesView(),
+            ),
+          ],
         ),
       ],
     ),
